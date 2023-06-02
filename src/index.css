@@ -32,7 +32,8 @@ span,
 h1,
 h2,
 h3,
-i {
+i,
+a {
   transition: 0.25s;
 }
 
