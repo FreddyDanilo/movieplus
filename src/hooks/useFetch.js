@@ -11,9 +11,14 @@ export const useFetch = (url) => {
     try {
       const fetchData = async () => {
         const json = await (await fetch(url + apiKey)).json();
-        const { results } = json;
+        const { results, genres } = json;
 
-        setData([...results]);
+        if (results) {
+          setData([...results]);
+        } else if (genres) {
+          setData([...genres]);
+        }
+
         setLoading(false);
       };
       fetchData();

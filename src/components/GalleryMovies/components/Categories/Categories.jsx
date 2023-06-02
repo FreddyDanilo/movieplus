@@ -1,40 +1,30 @@
-import { Link } from "react-router-dom";
 import styles from "./Categories.module.css";
+import { useFetch } from "../../../../hooks/useFetch";
+import { useContext } from "react";
+import { CategoryContext } from "../../../../context/CategoryContext";
 
-const categories = [
-  "Action",
-  "Adventure",
-  "Anime",
-  "Animation",
-  "Cinema",
-  "Comedy",
-  "Crime",
-  "Documentary",
-  "Drama",
-  "Family",
-  "Fantasy",
-  "History",
-  "Terror",
-  "Music",
-  "Mystery",
-  "Romance",
-  "Science Fiction",
-  "TV",
-  "Thriller",
-  "War",
-  "Wild West",
-];
-
-categories.sort();
+const api = import.meta.env.VITE_API_CATEGORIES;
 
 export const Categories = () => {
+  const url = `${api}list?api_key=`;
+  const { data: categories } = useFetch(url);
+
+  const { setCategory } = useContext(CategoryContext);
+
+  const changeCategory = (id) => setCategory(id);
+
   return (
     <div className={styles.categories}>
       <div className={styles.container}>
         <ul>
-          {categories.map((category) => (
-            <li key={encodeURI(category)}>
-              <Link to={category.toLocaleLowerCase()}>{category}</Link>
+          {categories.map(({ id, name }) => (
+            <li
+              key={id}
+              onClick={() => {
+                changeCategory(id);
+              }}
+            >
+              {name}
             </li>
           ))}
         </ul>

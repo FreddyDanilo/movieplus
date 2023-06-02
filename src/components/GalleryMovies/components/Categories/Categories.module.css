@@ -17,13 +17,13 @@
   justify-content: center;
 }
 
-.categories ul li a {
+.categories ul li {
   font-size: 1.6rem;
   font-weight: 500;
   color: var(--gray-240);
   cursor: pointer;
 }
 
-.categories ul li a:hover {
+.categories ul li:hover {
   color: var(--principal-color);
 }
