@@ -16,3 +16,8 @@
   top: 256px;
   left: 256px;
 }
+
+.flag {
+  position: absolute;
+  bottom: 0;
+}

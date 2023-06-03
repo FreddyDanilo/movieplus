@@ -14,7 +14,7 @@ export const useFetch = (url) => {
         const { results, genres } = json;
 
         if (results) {
-          setData([...results]);
+          setData([...data, ...results]);
         } else if (genres) {
           setData([...genres]);
         }

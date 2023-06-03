@@ -2,12 +2,12 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { App } from "./App.jsx";
 import "./index.css";
-import { CategoryContextProvider } from "./context/CategoryContext";
+import { MoviesContextProvider } from "./context/MoviesContext";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <CategoryContextProvider>
+    <MoviesContextProvider>
       <App />
-    </CategoryContextProvider>
+    </MoviesContextProvider>
   </React.StrictMode>
 );
