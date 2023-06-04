@@ -9,12 +9,22 @@ export const MoviesContextProvider = ({ children }) => {
   const [movies, setMovies] = useState([]);
   const [category, setCategory] = useState(null);
   const [page, setPage] = useState(1);
+  const [clear, setClear] = useState(false);
 
   const url = category
     ? `${api}popular?with_genres=${category}&page=${page}&api_key=`
     : `${api}popular?page=${page}&api_key=`;
 
-  const { data } = useFetch(url);
+  useEffect(() => {
+    setClear(true);
+    setPage(1);
+  }, [category]);
+
+  useEffect(() => {
+    setClear(false);
+  }, [page]);
+
+  const { data } = useFetch(url, clear);
 
   useEffect(() => {
     setMovies(data);
