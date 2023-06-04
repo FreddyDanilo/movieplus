@@ -9,26 +9,30 @@ export const MoviesContextProvider = ({ children }) => {
   const [movies, setMovies] = useState([]);
   const [category, setCategory] = useState(null);
   const [page, setPage] = useState(1);
-  const [clear, setClear] = useState(false);
 
   const url = category
     ? `${api}popular?with_genres=${category}&page=${page}&api_key=`
     : `${api}popular?page=${page}&api_key=`;
 
+  const { data } = useFetch(url);
+
   useEffect(() => {
-    setClear(true);
+    setMovies([...data]);
     setPage(1);
   }, [category]);
 
   useEffect(() => {
-    setClear(false);
-  }, [page]);
+    if (movies.length === 0 && page === 1) {
+      setMovies([...data]);
+    } else if (page > 1) {
+      const grossMovies = [...movies, ...data];
+      const allMovies = grossMovies.filter(
+        (movie, i, array) => i === array.findIndex(({ id }) => id === movie.id)
+      );
 
-  const { data } = useFetch(url, clear);
-
-  useEffect(() => {
-    setMovies([...new Set(data)]);
-  }, [data]);
+      setMovies(allMovies);
+    }
+  }, [data, page]);
 
   return (
     <MoviesContext.Provider

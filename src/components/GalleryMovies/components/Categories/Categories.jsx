@@ -8,24 +8,14 @@ const api = import.meta.env.VITE_API_CATEGORIES;
 export const Categories = () => {
   const url = `${api}list?api_key=`;
   const { data: categories } = useFetch(url);
-
   const { category, setCategory } = useContext(MoviesContext);
-
-  const changeCategory = (id) => {
-    if (category != id) setCategory(id);
-  };
 
   return (
     <div className={styles.categories}>
       <div className={styles.container}>
         <ul>
           {categories.map(({ id, name }) => (
-            <li
-              key={id}
-              onClick={() => {
-                changeCategory(id);
-              }}
-            >
+            <li key={id} onClick={() => category != id && setCategory(id)}>
               {name}
             </li>
           ))}

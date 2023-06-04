@@ -14,6 +14,7 @@ export const Overlay = () => {
       y: clientY,
     });
   };
+  
   return (
     <div
       className={styles.overlay}

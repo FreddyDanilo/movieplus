@@ -13,12 +13,7 @@ export const useFetch = (url, clear) => {
         const json = await (await fetch(url + apiKey)).json();
         const { results, genres } = json;
 
-        if (clear) {
-          if (results) setData([...results]);
-          return;
-        }
-
-        if (results) setData([...data, ...results]);
+        if (results) setData([...results]);
         else if (genres) setData([...genres]);
 
         setLoading(false);
