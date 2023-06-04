@@ -9,10 +9,10 @@ export const Categories = () => {
   const url = `${api}list?api_key=`;
   const { data: categories } = useFetch(url);
 
-  const { setCategory } = useContext(MoviesContext);
+  const { category, setCategory } = useContext(MoviesContext);
 
   const changeCategory = (id) => {
-    setCategory(id);
+    if (category != id) setCategory(id);
   };
 
   return (

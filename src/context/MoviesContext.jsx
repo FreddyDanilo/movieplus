@@ -27,7 +27,7 @@ export const MoviesContextProvider = ({ children }) => {
   const { data } = useFetch(url, clear);
 
   useEffect(() => {
-    setMovies(data);
+    setMovies([...new Set(data)]);
   }, [data]);
 
   return (

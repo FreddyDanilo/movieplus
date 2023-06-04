@@ -18,8 +18,8 @@ export const useFetch = (url, clear) => {
           return;
         }
 
-        if (results) setData([...data, ...results])
-        else if (genres) setData([...genres])
+        if (results) setData([...data, ...results]);
+        else if (genres) setData([...genres]);
 
         setLoading(false);
       };

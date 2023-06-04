@@ -4,7 +4,6 @@ export const CardMovie = ({ title, urlImage }) => {
   return (
     <div className={styles.card_movie}>
       <img src={urlImage} alt={title} />
-      <p>{title}</p>
     </div>
   );
 };
