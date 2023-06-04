@@ -8,8 +8,6 @@ export const Overlay = () => {
     y: 256,
   });
 
-  console.log("render overlay");
-
   window.onmousemove = ({ clientX, clientY }) => {
     setPositionOverlay({
       x: clientX,
