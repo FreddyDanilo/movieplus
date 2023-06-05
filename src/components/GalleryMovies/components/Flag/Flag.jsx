@@ -7,8 +7,9 @@ export const Flag = () => {
 
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
-      if (entries.some((entry) => entry.isIntersecting))
+      if (entries.some((entry) => entry.isIntersecting)) {
         setPage((prev) => prev + 1);
+      }
     });
     observer.observe(document.querySelector("#flag"));
     return () => observer.disconnect();

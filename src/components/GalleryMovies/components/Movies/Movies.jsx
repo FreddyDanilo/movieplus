@@ -11,9 +11,16 @@ export const Movies = () => {
   return (
     <div className={styles.movies}>
       <div className={styles.container}>
-        {movies.map(({ id, original_title: title, poster_path }) => (
-          <CardMovie key={id} title={title} urlImage={urlImage + poster_path} />
-        ))}
+        {movies.map(
+          ({ id, original_title: title, poster_path }) =>
+            poster_path && (
+              <CardMovie
+                key={id}
+                title={title}
+                urlImage={urlImage + poster_path}
+              />
+            )
+        )}
       </div>
     </div>
   );
