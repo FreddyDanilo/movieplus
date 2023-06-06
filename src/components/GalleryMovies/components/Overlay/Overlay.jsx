@@ -1,27 +1,14 @@
-import { useState } from "react";
+import { useRef } from "react";
 
 import styles from "./Overlay.module.css";
 
 export const Overlay = () => {
-  const [positionOverlay, setPositionOverlay] = useState({
-    x: 256,
-    y: 256,
-  });
+  const overlayRef = useRef();
 
   window.onmousemove = ({ clientX, clientY }) => {
-    setPositionOverlay({
-      x: clientX,
-      y: clientY,
-    });
+    overlayRef.current.style.left = `${clientX - 240}px`;
+    overlayRef.current.style.top = `${clientY - 240}px`;
   };
-  
-  return (
-    <div
-      className={styles.overlay}
-      style={{
-        top: positionOverlay.y - 240,
-        left: positionOverlay.x - 240,
-      }}
-    ></div>
-  );
+
+  return <div className={styles.overlay} ref={overlayRef}></div>;
 };
