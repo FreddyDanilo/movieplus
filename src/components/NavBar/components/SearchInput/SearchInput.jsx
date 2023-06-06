@@ -1,15 +1,38 @@
+import { useRef } from "react";
 import styles from "./SearchInput.module.css";
 
 export const SearchInput = () => {
+  const inputRef = useRef();
+
+  const handleButtonClick = () => {
+    const inputWidth = inputRef.current.style.width;
+
+    if (inputWidth === "300px") {
+      inputRef.current.style.width = "0px";
+    } else {
+      inputRef.current.style.width = "300px";
+    }
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("enviado");
+    const form = e.target;
+
+    const query = new FormData(form).get("search");
+    if (query != "") {
+      console.log(query);
+      form.reset();
+    }
   };
 
   return (
     <form className={styles.search} onSubmit={handleSubmit}>
-      <input type="search" name="search" />
-      <button>
+      <input type="search" name="search" ref={inputRef} />
+      <button
+        onClick={(e) => {
+          handleButtonClick();
+        }}
+      >
         <svg
           width="24"
           height="24"
