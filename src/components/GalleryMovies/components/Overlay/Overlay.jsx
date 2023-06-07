@@ -1,5 +1,4 @@
 import { useRef } from "react";
-
 import styles from "./Overlay.module.css";
 
 export const Overlay = () => {

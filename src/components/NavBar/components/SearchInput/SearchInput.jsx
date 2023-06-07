@@ -7,11 +7,8 @@ export const SearchInput = () => {
   const handleButtonClick = () => {
     const inputWidth = inputRef.current.style.width;
 
-    if (inputWidth === "300px") {
-      inputRef.current.style.width = "0px";
-    } else {
-      inputRef.current.style.width = "300px";
-    }
+    if (inputWidth === "300px") inputRef.current.style.width = "0px";
+    else inputRef.current.style.width = "300px";
   };
 
   const handleSubmit = (e) => {
@@ -28,11 +25,7 @@ export const SearchInput = () => {
   return (
     <form className={styles.search} onSubmit={handleSubmit}>
       <input type="search" name="search" ref={inputRef} />
-      <button
-        onClick={(e) => {
-          handleButtonClick();
-        }}
-      >
+      <button onClick={handleButtonClick}>
         <svg
           width="24"
           height="24"
