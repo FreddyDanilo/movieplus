@@ -1,8 +1,10 @@
 import { useRef } from "react";
 import styles from "./SearchInput.module.css";
+import { useNavigate } from "react-router-dom";
 
 export const SearchInput = () => {
   const inputRef = useRef();
+  const navigate = useNavigate();
 
   const handleButtonClick = () => {
     const inputWidth = inputRef.current.style.width;
@@ -17,7 +19,7 @@ export const SearchInput = () => {
 
     const query = new FormData(form).get("search");
     if (query != "") {
-      console.log(query);
+      navigate(`search?q=${query}`);
       form.reset();
     }
   };
