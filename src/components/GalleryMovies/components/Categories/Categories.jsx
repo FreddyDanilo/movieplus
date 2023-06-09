@@ -1,14 +1,13 @@
 import styles from "./Categories.module.css";
 import { useFetch } from "../../../../hooks/useFetch";
-import { useContext } from "react";
-import { MoviesContext } from "../../../../context/MoviesContext";
+import { useMoviesContext } from "../../../../hooks/useMoviesContext";
 
 const api = import.meta.env.VITE_API_CATEGORIES;
 
 export const Categories = () => {
   const url = `${api}list?api_key=`;
   const { data: categories } = useFetch(url);
-  const { category, setCategory } = useContext(MoviesContext);
+  const {category, setCategory} = useMoviesContext()
 
   return (
     <div className={styles.categories}>

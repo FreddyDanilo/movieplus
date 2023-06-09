@@ -1,12 +1,12 @@
 import { useContext } from "react";
 import { CardMovie } from "../CardMovie/CardMovie";
 import styles from "./Movies.module.css";
-import { MoviesContext } from "../../../../context/MoviesContext";
+import { useMoviesContext } from "../../../../hooks/useMoviesContext";
 
 const urlImage = import.meta.env.VITE_API_IMAGE_POSTER;
 
 export const Movies = () => {
-  const { movies } = useContext(MoviesContext);
+  const { movies } = useMoviesContext();
 
   return (
     <div className={styles.movies}>
