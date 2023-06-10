@@ -52,7 +52,7 @@
 }
 
 .title {
-  font-size: 8.8rem;
+  font-size: 6.4rem;
   font-weight: 800;
   color: var(--gray-240);
 }
@@ -69,4 +69,10 @@
   line-height: calc(1.6rem * 1.5);
   color: var(--gray-200);
   font-weight: 300;
+}
+
+@media screen and (max-width: 72rem) {
+  .container {
+    grid-template-columns: 1fr;
+  }
 }

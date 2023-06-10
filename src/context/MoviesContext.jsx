@@ -30,9 +30,8 @@ export const MoviesContextProvider = ({ children }) => {
   const { data } = useFetch(url);
 
   useEffect(() => {
-    if (movies.length === 0 || page === 1) {
-      setMovies(data);
-    } else if (page > 1) {
+    if (movies.length === 0 || page === 1) setMovies(data);
+    else if (page > 1) {
       const allMovies = [...movies, ...data].filter(
         (movie, i, array) => i === array.findIndex(({ id }) => id === movie.id)
       );

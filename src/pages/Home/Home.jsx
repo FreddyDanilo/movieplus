@@ -1,12 +1,14 @@
-import { useFetch } from "../../hooks/useFetch";
 import { RandomMovie } from "./components/RandomMovie";
 import { GalleryMovies } from "../../components/GalleryMovies/GalleryMovies";
 import styles from "./Home.module.css";
+import { MoviesContextProvider } from "../../context/MoviesContext";
 
 export const Home = () => {
   return (
     <div className={styles.home}>
-      <RandomMovie />
+      <MoviesContextProvider>
+        <RandomMovie />
+      </MoviesContextProvider>
       <GalleryMovies />
     </div>
   );
