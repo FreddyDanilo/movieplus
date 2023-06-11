@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import styles from "./RandomMovie.module.css";
 import { useFetch } from "../../../hooks/useFetch";
 
-const url = import.meta.env.VITE_API_RANDOM_MOVIE;
+const urlRandomMovie = import.meta.env.VITE_API_RANDOM_MOVIE;
 const urlImage = import.meta.env.VITE_API_IMAGE_BACKDROP;
 const api = import.meta.env.VITE_API_CATEGORIES;
 const urlCategories = `${api}list?api_key=`;
@@ -10,26 +10,18 @@ const index = Math.floor(Math.random() * 20);
 
 export const RandomMovie = () => {
   const { data: categories } = useFetch(urlCategories);
-  const { data: randomMovie } = useFetch(url);
-  const chosenMovie = randomMovie.length > 0 ? randomMovie[index] : "";
+  const { data: randomMovie } = useFetch(urlRandomMovie);
+  const chosenMovie = randomMovie.length > 0 && randomMovie[index];
 
-  const getCategories = () => {
-    const movieCategories =
-      randomMovie.length > 0
-        ? categories
-            .filter((category) => chosenMovie?.genre_ids.includes(category.id))
-            .map((item) => item.name)
-            .join(" - ")
-        : "";
-    return movieCategories;
-  };
-
-  const movieDetails = {
+  const movieDetails = randomMovie.length > 0 && {
     title: chosenMovie.name,
     src: urlImage + chosenMovie.backdrop_path,
     description: chosenMovie.overview,
     year: String(chosenMovie.first_air_date).split("-")[0],
-    categories: getCategories(),
+    categories: categories
+      .filter((category) => chosenMovie?.genre_ids.includes(category.id))
+      .map((item) => item.name)
+      .join(" - "),
   };
 
   return (
@@ -41,9 +33,6 @@ export const RandomMovie = () => {
             alt="wallpaper"
             className={styles.wallpaper}
           />
-
-          <div className={styles.overlay_left}></div>
-          <div className={styles.overlay_bottom}></div>
           <div className={styles.container}>
             <div className={styles.details}>
               <span>
@@ -57,6 +46,8 @@ export const RandomMovie = () => {
               </i>
             </div>
           </div>
+          <div className={styles.overlay_left}></div>
+          <div className={styles.overlay_bottom}></div>
         </>
       )}
     </div>
