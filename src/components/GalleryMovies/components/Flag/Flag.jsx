@@ -6,11 +6,11 @@ export const Flag = () => {
   const { setPage } = useContext(MoviesContext);
 
   useEffect(() => {
-    const observer = new IntersectionObserver((entries) => {
-      if (entries.some((entry) => entry.isIntersecting)) {
-        setPage((prev) => prev + 1);
-      }
-    });
+    const observer = new IntersectionObserver(
+      (entries) =>
+        entries.some(({ isIntersecting }) => isIntersecting) &&
+        setPage((prev) => prev + 1)
+    );
     observer.observe(document.querySelector("#flag"));
     return () => observer.disconnect();
   }, []);
