@@ -8,16 +8,14 @@ export const SearchInput = () => {
 
   const handleButtonClick = () => {
     const inputWidth = inputRef.current.style.width;
-
-    if (inputWidth === "300px") inputRef.current.style.width = "0px";
-    else inputRef.current.style.width = "300px";
+    inputRef.current.style.width = inputWidth === "300px" ? "0px" : "300px";
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const form = e.target;
 
-    const query = new FormData(form).get("search");
+    const query = new FormData(e.target).get("search");
+
     if (query != "") {
       navigate(`search?q=${query}`);
       form.reset();

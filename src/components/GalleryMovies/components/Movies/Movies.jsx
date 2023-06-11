@@ -1,4 +1,3 @@
-import { useContext } from "react";
 import { CardMovie } from "../CardMovie/CardMovie";
 import styles from "./Movies.module.css";
 import { useMoviesContext } from "../../../../hooks/useMoviesContext";
