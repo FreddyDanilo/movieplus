@@ -1,5 +1,6 @@
 import { createContext, useState, useEffect } from "react";
 import { useFetch } from "../hooks/useFetch";
+
 export const MoviesContext = createContext();
 
 const api = import.meta.env.VITE_API;
