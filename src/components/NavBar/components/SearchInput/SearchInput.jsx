@@ -13,13 +13,9 @@ export const SearchInput = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
     const query = new FormData(e.target).get("search");
-
-    if (query != "") {
-      navigate(`search?q=${query}`);
-      form.reset();
-    }
+    query !== "" && navigate(`search?q=${query}`);
+    e.target.reset();
   };
 
   return (
