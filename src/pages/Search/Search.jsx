@@ -1,5 +1,11 @@
-import styles from "./Search.module.css";
+import { Overlay } from "../../components/GalleryMovies/components/Overlay/Overlay";
+import { Results } from "./Results/Results";
 
 export const Search = () => {
-  return <div>Search</div>;
+  return (
+    <div>
+      <Results />
+      <Overlay />
+    </div>
+  );
 };
