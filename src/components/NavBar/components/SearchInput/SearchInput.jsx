@@ -20,8 +20,13 @@ export const SearchInput = () => {
 
   return (
     <form className={styles.search} onSubmit={handleSubmit}>
-      <input type="search" name="search" ref={inputRef} />
-      <button onClick={handleButtonClick}>
+      <input
+        type="search"
+        name="search"
+        ref={inputRef}
+        aria-label="Search Input"
+      />
+      <button onClick={handleButtonClick} aria-label="Search Button" type="submit">
         <svg
           width="24"
           height="24"
