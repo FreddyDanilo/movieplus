@@ -8,7 +8,11 @@ export const SearchInput = () => {
 
   const handleButtonClick = () => {
     const inputWidth = inputRef.current.style.width;
-    inputRef.current.style.width = inputWidth === "300px" ? "0px" : "300px";
+    if (inputWidth === "300px") inputRef.current.style.width = "0px";
+    else {
+      inputRef.current.style.width = "300px";
+      inputRef.current.focus();
+    }
   };
 
   const handleSubmit = (e) => {
@@ -26,7 +30,11 @@ export const SearchInput = () => {
         ref={inputRef}
         aria-label="Search Input"
       />
-      <button onClick={handleButtonClick} aria-label="Search Button" type="submit">
+      <button
+        onClick={handleButtonClick}
+        aria-label="Search Button"
+        type="submit"
+      >
         <svg
           width="24"
           height="24"
