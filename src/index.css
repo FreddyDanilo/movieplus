@@ -3,6 +3,7 @@
 :root {
   font-size: 10px;
   --gray-20: rgb(20, 20, 20);
+  --gray-40: rgb(40, 40, 40);
   --gray-20-opacity: rgba(20, 20, 20, 0.85);
   --gray-200: rgb(200, 200, 200);
   --gray-240: rgb(240, 240, 240);
