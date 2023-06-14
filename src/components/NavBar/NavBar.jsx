@@ -8,14 +8,13 @@ export const NavBar = () => {
 
   const handleScroll = () => {
     const distanceAmongScrollAndTop = window.scrollY;
-    if (distanceAmongScrollAndTop >= 150 && scrollEffect != "scroll_active") {
+    if (distanceAmongScrollAndTop >= 150 && scrollEffect != "scroll_active")
       setScrollEffect("scroll_active");
-    } else if (
+    else if (
       distanceAmongScrollAndTop < 150 &&
       scrollEffect != "scroll_initial"
-    ) {
+    )
       setScrollEffect("scroll_initial");
-    }
   };
 
   window.onscroll = handleScroll;
