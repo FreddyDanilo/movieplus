@@ -14,24 +14,28 @@ export const Results = () => {
 
   return (
     <div className={styles.results_container}>
-      <span className={styles.results}>
-        {query} {movies.length} resultados
-      </span>
-      <div className={styles.movies}>
-        <div className={styles.container}>
-          {movies.length > 0 &&
-            movies.map(
-              ({ id, original_title: title, poster_path }) =>
-                poster_path && (
-                  <CardMovie
-                    key={id}
-                    title={`Cover ${title}`}
-                    urlImage={urlImage + poster_path}
-                  />
-                )
-            )}
-        </div>
-      </div>
+      {movies.length > 0 && (
+        <>
+          <span className={styles.results}>
+            {query} {movies.length} resultados
+          </span>
+          <div className={styles.movies}>
+            <div className={styles.container}>
+              {movies.map(
+                ({ id, original_title: title, poster_path }) =>
+                  poster_path && (
+                    <CardMovie
+                      key={id}
+                      title={`Cover ${title}`}
+                      urlImage={urlImage + poster_path}
+                      idmovie={id}
+                    />
+                  )
+              )}
+            </div>
+          </div>
+        </>
+      )}
     </div>
   );
 };

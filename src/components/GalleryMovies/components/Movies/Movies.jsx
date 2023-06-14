@@ -17,6 +17,7 @@ export const Movies = () => {
                 key={id}
                 title={title}
                 urlImage={urlImage + poster_path}
+                idmovie={id}
               />
             )
         )}
