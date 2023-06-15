@@ -8,10 +8,11 @@ export const useFetch = (url, single) => {
 
   useEffect(() => {
     setLoading(true);
-    try {
-      const fetchData = async () => {
+
+    const fetchData = async () => {
+      try {
         const json = await (await fetch(url + apiKey)).json();
-        const { results, genres } = json;
+        const { results, genres } = await json;
 
         if (single) {
           setData([json]);
@@ -19,14 +20,13 @@ export const useFetch = (url, single) => {
           if (results) setData([...results]);
           else if (genres) setData([...genres]);
         }
-
         setLoading(false);
-      };
-      fetchData();
-    } catch (error) {
-      console.log("erro");
-      setLoading(false);
-    }
+      } catch (error) {
+        console.log("erro");
+        setLoading(false);
+      }
+    };
+    fetchData();
   }, [url]);
 
   return { data, loading };
