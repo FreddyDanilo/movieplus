@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 const apiKey = import.meta.env.VITE_API_KEY;
 
-export const useFetch = (url, clear) => {
+export const useFetch = (url, single) => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
 
@@ -13,8 +13,12 @@ export const useFetch = (url, clear) => {
         const json = await (await fetch(url + apiKey)).json();
         const { results, genres } = json;
 
-        if (results) setData([...results]);
-        else if (genres) setData([...genres]);
+        if (single) {
+          setData([json]);
+        } else {
+          if (results) setData([...results]);
+          else if (genres) setData([...genres]);
+        }
 
         setLoading(false);
       };
