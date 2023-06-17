@@ -55,6 +55,12 @@
   font-size: 6.4rem;
   font-weight: 800;
   color: var(--gray-240);
+  transition: 0.25s;
+  cursor: pointer;
+}
+
+.title:hover {
+  color: var(--principal-color);
 }
 
 .description {
@@ -74,5 +80,9 @@
 @media screen and (max-width: 72rem) {
   .container {
     grid-template-columns: 1fr;
+  }
+
+  .overlay_left {
+    background: var(--gray-20-opacity);
   }
 }

@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import styles from "./RandomMovie.module.css";
 import { useFetch } from "../../../hooks/useFetch";
 
@@ -12,9 +12,13 @@ export const RandomMovie = () => {
   const { data: categories } = useFetch(urlCategories);
   const { data: randomMovie } = useFetch(urlRandomMovie);
   const chosenMovie = randomMovie.length > 0 && randomMovie[index];
+  const navigate = useNavigate();
+
+  console.log(chosenMovie);
 
   const movieDetails = randomMovie.length > 0 && {
-    title: chosenMovie.name,
+    title: chosenMovie.title,
+    id: chosenMovie.id,
     src: urlImage + chosenMovie.backdrop_path,
     description: chosenMovie.overview,
     year: String(chosenMovie.first_air_date).split("-")[0],
@@ -22,6 +26,10 @@ export const RandomMovie = () => {
       .filter((category) => chosenMovie?.genre_ids.includes(category.id))
       .map((item) => item.name)
       .join(" - "),
+  };
+
+  const handleClick = (id) => {
+    navigate(`/movie/${id}`);
   };
 
   return (
@@ -35,10 +43,13 @@ export const RandomMovie = () => {
           />
           <div className={styles.container}>
             <div className={styles.details}>
-              <span>
-                <Link to={"/"} className={styles.title}>
-                  {movieDetails.title}
-                </Link>
+              <span
+                className={styles.title}
+                onClick={() => {
+                  handleClick(movieDetails.id);
+                }}
+              >
+                {movieDetails.title}
               </span>
               <p className={styles.description}>{movieDetails.description}</p>
               <i className={styles.categories}>
