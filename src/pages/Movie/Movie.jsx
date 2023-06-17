@@ -22,15 +22,18 @@ export const Movie = () => {
     description: movie[0].overview,
     year: String(movie[0].release_date).split("-")[0],
     categories: movie[0].genres.map((category) => category.name).join(" - "),
-    key: movie[0]?.videos?.results?.find(
-      (video) => video.name === "Official Trailer"
-    )?.key,
+    // key: movie[0]?.videos?.results?.find(
+    //   (video) => video.name === "Official Trailer"
+    // )?.key,
+    key: movie[0]?.videos?.results?.pop()?.key,
   };
 
   // console.log(
   //   movie[0]?.videos.results.find((video) => video.name === "Official Trailer").key
   // );
 
+  console.log(movie);
+  console.log(movieDetails?.key)
   return (
     <>
       {movie.length > 0 && (
@@ -91,6 +94,24 @@ export const Movie = () => {
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 ></iframe>
               )}
+              {/* {!movieDetails.key && movieDetails.key2 && (
+                <iframe
+                  style={{ width: "min(100%, 108rem)", aspectRatio: "16/9" }}
+                  src={`https://www.youtube.com/embed/${movieDetails.key2}`}
+                  title="YouTube video player"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                ></iframe>
+              )}
+              {!movieDetails.key && !movieDetails.key2 && movieDetails.key3 && (
+                <iframe
+                  style={{ width: "min(100%, 108rem)", aspectRatio: "16/9" }}
+                  src={`https://www.youtube.com/embed/${movieDetails.key3}`}
+                  title="YouTube video player"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                ></iframe>
+              )} */}
             </div>
           </div>
         </>
