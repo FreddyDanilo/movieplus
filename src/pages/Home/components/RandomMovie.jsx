@@ -14,8 +14,6 @@ export const RandomMovie = () => {
   const chosenMovie = randomMovie.length > 0 && randomMovie[index];
   const navigate = useNavigate();
 
-  console.log(chosenMovie);
-
   const movieDetails = randomMovie.length > 0 && {
     title: chosenMovie.title,
     id: chosenMovie.id,
@@ -28,9 +26,7 @@ export const RandomMovie = () => {
       .join(" - "),
   };
 
-  const handleClick = (id) => {
-    navigate(`/movie/${id}`);
-  };
+  const handleClick = (id) => navigate(`/movie/${id}`)
 
   return (
     <div className={styles.random_movie}>

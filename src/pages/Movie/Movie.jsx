@@ -1,6 +1,8 @@
 import { useParams } from "react-router-dom";
 import styles from "./Movie.module.css";
 import { useFetch } from "../../hooks/useFetch";
+import { Recomendations } from "./components/Recomendations";
+import { useEffect } from "react";
 
 const api = import.meta.env.VITE_API;
 const urlImageBackdrop = import.meta.env.VITE_API_IMAGE_BACKDROP;
@@ -22,15 +24,10 @@ export const Movie = () => {
     description: movie[0].overview,
     year: String(movie[0].release_date).split("-")[0],
     categories: movie[0].genres.map((category) => category.name).join(" - "),
-    // key: movie[0]?.videos?.results?.find(
-    //   (video) => video.name === "Official Trailer"
-    // )?.key,
-    key: movie[0]?.videos?.results?.pop()?.key,
+    key: movie[0]?.videos?.results?.find(
+      (video) => video.name === "Official Trailer"
+    )?.key,
   };
-
-  // console.log(
-  //   movie[0]?.videos.results.find((video) => video.name === "Official Trailer").key
-  // );
 
   return (
     <>
@@ -93,6 +90,7 @@ export const Movie = () => {
                 ></iframe>
               )}
             </div>
+            <Recomendations />
           </div>
         </>
       )}
