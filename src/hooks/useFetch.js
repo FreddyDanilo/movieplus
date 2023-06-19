@@ -14,15 +14,13 @@ export const useFetch = (url, single) => {
         const json = await (await fetch(url + apiKey)).json();
         const { results, genres } = await json;
 
-        if (single) {
-          setData([json]);
-        } else {
+        if (single) setData([json]);
+        else {
           if (results) setData([...results]);
           else if (genres) setData([...genres]);
         }
         setLoading(false);
       } catch (error) {
-        console.log("erro");
         setLoading(false);
       }
     };
