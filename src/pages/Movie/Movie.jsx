@@ -2,7 +2,7 @@ import { useParams } from "react-router-dom";
 import styles from "./Movie.module.css";
 import { useFetch } from "../../hooks/useFetch";
 import { Recomendations } from "./components/Recomendations";
-import { useEffect } from "react";
+import { Overlay } from "../../components/GalleryMovies/components/Overlay/Overlay";
 
 const api = import.meta.env.VITE_API;
 const urlImageBackdrop = import.meta.env.VITE_API_IMAGE_BACKDROP;
@@ -91,6 +91,7 @@ export const Movie = () => {
               )}
             </div>
             <Recomendations />
+            <Overlay />
           </div>
         </>
       )}
