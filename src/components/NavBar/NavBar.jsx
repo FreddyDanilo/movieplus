@@ -57,7 +57,7 @@ export const NavBar = () => {
               <Link>Movies</Link>
             </li>
             <li>
-              <Link>About</Link>
+              <Link to={"/about"}>About</Link>
             </li>
           </ul>
           <SearchInput />
