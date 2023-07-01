@@ -1,10 +1,19 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styles from "./NavBar.module.css";
 import { Link } from "react-router-dom";
 import { SearchInput } from "./components/SearchInput/SearchInput";
 
 export const NavBar = () => {
   const [scrollEffect, setScrollEffect] = useState("scroll_initial");
+  const [isWidthMobile, setIsWidthMobile] = useState(false);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(max-width: 720px)");
+    const handleWidthChange = (event) => setIsWidthMobile(event.matches);
+    handleWidthChange(mediaQuery);
+    mediaQuery.addEventListener("change", handleWidthChange);
+    return () => mediaQuery.removeEventListener("change", handleWidthChange);
+  }, []);
 
   const handleScroll = () => {
     const distanceAmongScrollAndTop = window.scrollY;
@@ -44,21 +53,25 @@ export const NavBar = () => {
         </div>
         <div className={styles.menu}>
           <ul>
-            <li>
-              <Link>News</Link>
-            </li>
-            <li>
-              <Link>Popularity</Link>
-            </li>
-            <li>
-              <Link>Rating</Link>
-            </li>
-            <li>
-              <Link>Movies</Link>
-            </li>
-            <li>
-              <Link to={"/about"}>About</Link>
-            </li>
+            {!isWidthMobile && (
+              <>
+                <li>
+                  <Link>News</Link>
+                </li>
+                <li>
+                  <Link>Popularity</Link>
+                </li>
+                <li>
+                  <Link>Rating</Link>
+                </li>
+                <li>
+                  <Link>Movies</Link>
+                </li>
+                <li>
+                  <Link to={"/about"}>About</Link>
+                </li>
+              </>
+            )}
           </ul>
           <SearchInput />
           <div className={styles.profile}></div>

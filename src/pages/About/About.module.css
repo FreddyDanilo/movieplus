@@ -18,11 +18,6 @@
   color: var(--gray-240);
 }
 
-.message {
-  font-size: 3.2rem;
-  color: var(--gray-200);
-}
-
 .repository {
   margin-top: 2.2rem;
   padding: 1.6rem;
