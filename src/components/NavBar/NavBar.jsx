@@ -74,7 +74,7 @@ export const NavBar = () => {
             )}
           </ul>
           <SearchInput />
-          <div className={styles.profile}></div>
+          {/* <div className={styles.profile}></div> */}
         </div>
       </div>
     </nav>

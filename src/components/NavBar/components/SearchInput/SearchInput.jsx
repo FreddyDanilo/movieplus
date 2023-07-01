@@ -8,9 +8,9 @@ export const SearchInput = () => {
 
   const handleButtonClick = () => {
     const inputWidth = inputRef.current.style.width;
-    if (inputWidth === "300px") inputRef.current.style.width = "0px";
+    if (inputWidth === "100%") inputRef.current.style.width = "0px";
     else {
-      inputRef.current.style.width = "300px";
+      inputRef.current.style.width = "100%";
       inputRef.current.focus();
     }
   };

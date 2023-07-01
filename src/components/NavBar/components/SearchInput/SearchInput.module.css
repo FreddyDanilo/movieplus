@@ -19,8 +19,8 @@
   color: var(--principal-color);
   font-weight: 500;
   padding: 0.2rem 0;
-  /* border-bottom: 2px solid var(--principal-color); */
   border-bottom: 0.2rem solid white;
   transition: 0.25s;
   width: 0px;
+  max-width: 30rem;
 }
